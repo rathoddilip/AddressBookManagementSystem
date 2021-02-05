@@ -65,25 +65,73 @@ namespace AddressBookManagementApp
 
         public void EditAddressBook(string firstname, string lastname)
         {
+            int count = 0;
+            bool exits = false;
             foreach (Person person in listgetDetail)
             {
                 if (firstname == person.firstName && lastname == person.lastName)
                 {
-                    Console.WriteLine("Update you wanted contact details!!! ");
-                    PersonDetail persongetDetail = new PersonDetail();
-                    persongetDetail.PersonAddress();
+                    exits = true;
+                    break;
                 }
-                else
-                {
-                    Console.WriteLine("Contact not found!! ");
-                }
+                count++;
+            }
+            if (exits)
+            {
+                Console.WriteLine("Enter first name");
+                listgetDetail[count].firstName = Console.ReadLine();
+                Console.WriteLine("Enter Last name");
+                listgetDetail[count].lastName = Console.ReadLine();
+                Console.WriteLine("Enter address");
+                listgetDetail[count].address = Console.ReadLine();
+                Console.WriteLine("Enter city");
+                listgetDetail[count].city = Console.ReadLine();
+                Console.WriteLine("Enter state");
+                listgetDetail[count].state = Console.ReadLine();
+                Console.WriteLine("Enter zipCode");
+                listgetDetail[count].zipCode = Console.ReadLine();
+                Console.WriteLine("Enter phone number");
+                listgetDetail[count].phoneNumber = Console.ReadLine();
+                Console.WriteLine("Enter emaiId");
+                listgetDetail[count].emailId = Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Contact not found!!");
             }
         }
+<<<<<<< Updated upstream
     }
    class Program
     {
 
         static void Main(string[] args)
+=======
+            public void DeleteAddressBook(string firstname, string lastname)
+        {
+            int count = 0;
+            bool exits = false;
+            foreach (Person person in listgetDetail)
+            {
+                if (firstname == person.firstName && lastname == person.lastName)
+                {
+                    exits = true;
+                    break;
+                }
+                count++;
+            }
+            if (exits)
+            {
+                listgetDetail.Remove(listgetDetail[count]);
+            }
+            else
+            {
+                Console.WriteLine("Contact not found!!");
+            }
+        }       
+ }
+        class Program
+>>>>>>> Stashed changes
         {
             Console.WriteLine("Welcome to Address book management system!");
             PersonDetail persongetDetail = new PersonDetail();
