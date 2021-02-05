@@ -100,73 +100,49 @@ namespace AddressBookManagementApp
                 Console.WriteLine("Contact not found!!");
             }
         }
-<<<<<<< Updated upstream
+
     }
    class Program
     {
 
         static void Main(string[] args)
-=======
-            public void DeleteAddressBook(string firstname, string lastname)
-        {
-            int count = 0;
-            bool exits = false;
-            foreach (Person person in listgetDetail)
-            {
-                if (firstname == person.firstName && lastname == person.lastName)
-                {
-                    exits = true;
-                    break;
-                }
-                count++;
-            }
-            if (exits)
-            {
-                listgetDetail.Remove(listgetDetail[count]);
-            }
-            else
-            {
-                Console.WriteLine("Contact not found!!");
-            }
-        }       
- }
-        class Program
->>>>>>> Stashed changes
         {
             Console.WriteLine("Welcome to Address book management system!");
             PersonDetail persongetDetail = new PersonDetail();
-            persongetDetail.PersonAddress();
+            //persongetDetail.PersonAddress();
             int choice;
             do
             {
                 Console.WriteLine("Enter your choice");
-                Console.WriteLine("1) Display address book");
-                Console.WriteLine("2) Add a new contact to address book");
-                Console.WriteLine("3) Edit existing contace person using person's name ");
-                Console.WriteLine("4) Delete a person using person's name ");
+                
+                Console.WriteLine("1) Add a new contact to address book");
+                Console.WriteLine("2) Edit existing contace person using person's name ");
+                Console.WriteLine("3) Delete a person using person's name ");
+                Console.WriteLine("4) Display address book");
                 Console.WriteLine("5) Exit");
-
+               
                 choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
                 {
+                   
                     case 1:
-                        Console.WriteLine("Address book!! ");//Display Addressbook
-                        persongetDetail.DispalyAddressBook();
-                        break;
-                    case 2:
                         persongetDetail.PersonAddress();//add new record
                         
                         break;
-                    case 3:
+                    case 2:
                         Console.WriteLine("Enter first name");//edit();
                         string firstname = Console.ReadLine();
                         Console.WriteLine("Enter Last name");
                         string lastname = Console.ReadLine();
                         persongetDetail.EditAddressBook(firstname, lastname);
                         break;
-                    case 4:
+                    case 3:
                         //delete();
+                        break;
+                    case 4:
+                        Console.WriteLine("Address book!! ");//Display Addressbook
+                        persongetDetail.DispalyAddressBook();
                         break;
                     case 5:
                         Console.WriteLine("Thank you!!! ");
