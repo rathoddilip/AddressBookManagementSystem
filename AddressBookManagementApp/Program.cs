@@ -20,7 +20,7 @@ namespace AddressBookManagementApp
     public class PersonDetail
     {
 
-        List<Person> listgetDetail;
+        List<Person> listgetDetail;//Ability to add multiple person to address book
         public PersonDetail()
         {
             listgetDetail = new List<Person>();
@@ -117,6 +117,7 @@ namespace AddressBookManagementApp
             if (exits)
             {
                 listgetDetail.Remove(listgetDetail[count]);
+                Console.WriteLine("Contact deleted successfully");
             }
             else
             {
