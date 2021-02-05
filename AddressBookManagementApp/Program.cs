@@ -11,7 +11,7 @@ namespace AddressBookManagementApp
         public string address;
         public string city;
         public string state;
-        public int zipCode;
+        public string zipCode;
         public string phoneNumber;
         public string emailId;
 
@@ -19,12 +19,13 @@ namespace AddressBookManagementApp
 
     public class PersonDetail
     {
-        List<Person> getDetail;
+        
+        List<Person> listgetDetail;
         public PersonDetail()
         {
-            getDetail = new List<Person>();
+            listgetDetail = new List<Person>();
         }
-         public void PersonAddress()
+        public void PersonAddress()
             {
                 Person person = new Person();
                 Console.WriteLine("Enter first name");
@@ -38,23 +39,38 @@ namespace AddressBookManagementApp
                 Console.WriteLine("Enter state");
                 person.state = Console.ReadLine();
                 Console.WriteLine("Enter zipCode");
-                person.zipCode = Convert.ToInt32(Console.ReadLine());
+                person.zipCode =Console.ReadLine();
                 Console.WriteLine("Enter phone number");
                 person.phoneNumber = Console.ReadLine();
                 Console.WriteLine("Enter emaiId");
                 person.emailId = Console.ReadLine();
 
-                getDetail.Add(person);
+                listgetDetail.Add(person);
+ 
+            }
+        public void DispalyAddressBook()
+        {
+            foreach (Person person in listgetDetail)
+            {
+                Console.WriteLine("first Name: " + person.firstName);
+                Console.WriteLine("last Name: " + person.lastName);
+                Console.WriteLine("Address: " + person.address);
+                Console.WriteLine("City: " + person.city);
+                Console.WriteLine("State: " + person.state);
+                Console.WriteLine("Zip code: " + person.zipCode);
+                Console.WriteLine("PhoneNumber: " + person.phoneNumber);
+                Console.WriteLine("EmailId: " + person.emailId);
             }
         }
+       }
    class Program
     {
 
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to Address book management system!");
-            PersonDetail getDetail = new PersonDetail();
-            getDetail.PersonAddress();
+            PersonDetail persongetDetail = new PersonDetail();
+            persongetDetail.PersonAddress();
             int choice;
             do
             {
@@ -70,12 +86,12 @@ namespace AddressBookManagementApp
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Add address book details");
-                        //Display
+                        Console.WriteLine("Address book!! ");//Display Addressbook
+                        persongetDetail.DispalyAddressBook();
                         break;
                     case 2:
+                        persongetDetail.PersonAddress();//add new record
                         
-                        //add();
                         break;
                     case 3:
                         //edit();
