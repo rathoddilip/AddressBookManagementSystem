@@ -19,35 +19,35 @@ namespace AddressBookManagementApp
 
     public class PersonDetail
     {
-        
+
         List<Person> listgetDetail;
         public PersonDetail()
         {
             listgetDetail = new List<Person>();
         }
         public void PersonAddress()
-            {
-                Person person = new Person();
-                Console.WriteLine("Enter first name");
-                person.firstName = Console.ReadLine();
-                Console.WriteLine("Enter Last name");
-                person.lastName = Console.ReadLine();
-                Console.WriteLine("Enter address");
-                person.address = Console.ReadLine();
-                Console.WriteLine("Enter city");
-                person.city = Console.ReadLine();
-                Console.WriteLine("Enter state");
-                person.state = Console.ReadLine();
-                Console.WriteLine("Enter zipCode");
-                person.zipCode =Console.ReadLine();
-                Console.WriteLine("Enter phone number");
-                person.phoneNumber = Console.ReadLine();
-                Console.WriteLine("Enter emaiId");
-                person.emailId = Console.ReadLine();
+        {
+            Person person = new Person();
+            Console.WriteLine("Enter first name");
+            person.firstName = Console.ReadLine();
+            Console.WriteLine("Enter Last name");
+            person.lastName = Console.ReadLine();
+            Console.WriteLine("Enter address");
+            person.address = Console.ReadLine();
+            Console.WriteLine("Enter city");
+            person.city = Console.ReadLine();
+            Console.WriteLine("Enter state");
+            person.state = Console.ReadLine();
+            Console.WriteLine("Enter zipCode");
+            person.zipCode = Console.ReadLine();
+            Console.WriteLine("Enter phone number");
+            person.phoneNumber = Console.ReadLine();
+            Console.WriteLine("Enter emaiId");
+            person.emailId = Console.ReadLine();
 
-                listgetDetail.Add(person);
- 
-            }
+            listgetDetail.Add(person);
+
+        }
         public void DispalyAddressBook()
         {
             foreach (Person person in listgetDetail)
@@ -62,7 +62,24 @@ namespace AddressBookManagementApp
                 Console.WriteLine("EmailId: " + person.emailId);
             }
         }
-       }
+
+        public void EditAddressBook(string firstname, string lastname)
+        {
+            foreach (Person person in listgetDetail)
+            {
+                if (firstname == person.firstName && lastname == person.lastName)
+                {
+                    Console.WriteLine("Update you wanted contact details!!! ");
+                    PersonDetail persongetDetail = new PersonDetail();
+                    persongetDetail.PersonAddress();
+                }
+                else
+                {
+                    Console.WriteLine("Contact not found!! ");
+                }
+            }
+        }
+    }
    class Program
     {
 
@@ -94,7 +111,11 @@ namespace AddressBookManagementApp
                         
                         break;
                     case 3:
-                        //edit();
+                        Console.WriteLine("Enter first name");//edit();
+                        string firstname = Console.ReadLine();
+                        Console.WriteLine("Enter Last name");
+                        string lastname = Console.ReadLine();
+                        persongetDetail.EditAddressBook(firstname, lastname);
                         break;
                     case 4:
                         //delete();
