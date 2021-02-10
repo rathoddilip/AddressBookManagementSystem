@@ -124,60 +124,95 @@ namespace AddressBookManagementApp
                 Console.WriteLine("Contact not found!!");
             }
         }
-
-    }
-   class Program
-    {
-
-        static void Main(string[] args)
+        public class AddressBookCollection
         {
-            Console.WriteLine("Welcome to Address book management system!");
-            PersonDetail persongetDetail = new PersonDetail();
-            //persongetDetail.PersonAddress();
-            int choice;
-            do
+            public Dictionary<string, PersonDetail> addressBookDictionary;
+            public AddressBookCollection()
             {
-                Console.WriteLine("Enter your choice");
-                
-                Console.WriteLine("1) Add a new contact to address book");
-                Console.WriteLine("2) Edit existing contace person using person's name ");
-                Console.WriteLine("3) Delete a person using person's name ");
-                Console.WriteLine("4) Display address book");
-                Console.WriteLine("5) Exit");
-               
-                choice = Convert.ToInt32(Console.ReadLine());
-
-                switch (choice)
+                addressBookDictionary = new Dictionary<string, PersonDetail>();
+            }
+            public void PrintAllAddressBookNames()
+            {
+                foreach (var AddressBookItem in addressBookDictionary)
                 {
-                   
-                    case 1:
-                        persongetDetail.PersonAddress();//add new record
-                        
-                        break;
-                    case 2:
-                        Console.WriteLine("Enter first name");//edit();
-                        string firstname = Console.ReadLine();
-                        Console.WriteLine("Enter Last name");
-                        string lastname = Console.ReadLine();
-                        persongetDetail.EditAddressBook(firstname, lastname);
-                        break;
-                    case 3:
-                        Console.WriteLine("Enter first name");//edit();
-                        firstname = Console.ReadLine();
-                        Console.WriteLine("Enter Last name");
-                         lastname = Console.ReadLine();
-                        persongetDetail.DeleteAddressBook(firstname, lastname);
-                        break;
-                    case 4:
-                        Console.WriteLine("Address book!! ");//Display Addressbook
-                        persongetDetail.DispalyAddressBook();
-                        break;
-                    case 5:
-                        Console.WriteLine("Thank you!!! ");
-                        break;
+                    Console.WriteLine(AddressBookItem.Key);
                 }
-            }while (choice != 5) ;
+            }
+        }
 
+        class Program
+        {
+
+            static void Main(string[] args)
+            {
+                Console.WriteLine("Welcome to Address book management system!");
+                Console.WriteLine("Enter Default Address Book Name");
+                string addressBookName = Console.ReadLine();
+                AddressBookCollection addressBookCollection = new AddressBookCollection();
+                PersonDetail persongetDetail = new PersonDetail();
+                addressBookCollection.addressBookDictionary.Add(addressBookName, persongetDetail);
+                int choice;
+                do
+                {
+                    Console.WriteLine("Enter your choice");
+
+                    Console.WriteLine("1) Add a new contact to address book");
+                    Console.WriteLine("2) Edit existing contace person using person's name ");
+                    Console.WriteLine("3) Delete a person using person's name ");
+                    Console.WriteLine("4) Display All contacts");
+                    Console.WriteLine("5) Add new Address book");
+                    Console.WriteLine("6) Choose the address book");
+                    Console.WriteLine("7) Exit");
+
+                    choice = Convert.ToInt32(Console.ReadLine());
+
+                    switch (choice)
+                    {
+
+                        case 1:
+                            addressBookCollection.addressBookDictionary[addressBookName].PersonAddress();//add new record
+
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter first name");//edit();
+                            string firstname = Console.ReadLine();
+                            Console.WriteLine("Enter Last name");
+                            string lastname = Console.ReadLine();
+                            addressBookCollection.addressBookDictionary[addressBookName].EditAddressBook(firstname, lastname);
+                            break;
+                        case 3:
+                            Console.WriteLine("Enter first name");//edit();
+                            firstname = Console.ReadLine();
+                            Console.WriteLine("Enter Last name");
+                            lastname = Console.ReadLine();
+                            addressBookCollection.addressBookDictionary[addressBookName].DeleteAddressBook(firstname, lastname);
+                            break;
+                        case 4:
+                            Console.WriteLine("List of  all contact !! ");//Display Addressbook
+                            addressBookCollection.addressBookDictionary[addressBookName].DispalyAddressBook();
+                            break;
+                        case 5:
+                            Console.WriteLine("Enter New Address Book Name");//add new address book name
+                            addressBookName = Console.ReadLine();
+                            addressBookCollection.addressBookDictionary.Add(addressBookName, new PersonDetail());
+                            Console.WriteLine($"Address Book {addressBookName} selected!");
+                            break;
+                        case 6:
+                            Console.WriteLine("Listing all Address Books");//listout all available address book
+                            foreach (var addressBookEntry in addressBookCollection.addressBookDictionary)
+                            {
+                                Console.WriteLine(addressBookEntry.Key);
+                            }
+                        Console.WriteLine("Select an Address Book");
+                        addressBookName = Console.ReadLine();
+                        break;
+                        case 7:
+                            Console.WriteLine("Thank you!!! ");
+                            break;
+                    }
+                } while (choice != 7);
+
+            }
         }
     }
 }
